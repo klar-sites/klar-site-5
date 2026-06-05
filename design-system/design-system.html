@@ -1,0 +1,1274 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Design System · Premium SaaS Landing</title>
+  <link rel="stylesheet" href="/style.css" />
+  <style>
+    /* Documentation chrome only — not part of the design system. Every rule is prefixed .ds-. */
+    .ds-page {
+      padding-block: var(--space-12);
+    }
+
+    .ds-block {
+      padding-block: var(--space-12);
+      border-bottom: var(--border-width-sm) solid var(--border);
+    }
+
+    .ds-block:last-child {
+      border-bottom: 0;
+    }
+
+    .ds-block > h2 {
+      margin-bottom: var(--space-3);
+    }
+
+    .ds-note {
+      max-width: var(--content-width-narrow);
+      margin-bottom: var(--space-8);
+      color: var(--muted-foreground);
+    }
+
+    .ds-subhead {
+      margin-top: var(--space-10);
+      margin-bottom: var(--space-4);
+      font-size: var(--text-xl);
+    }
+
+    .ds-subhead:first-child {
+      margin-top: 0;
+    }
+
+    .ds-specimens {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+      align-items: center;
+      padding: var(--space-6);
+      border: var(--border-width-sm) solid var(--border);
+      border-radius: var(--radius-2xl);
+      background: color-mix(in srgb, var(--card) 78%, transparent);
+    }
+
+    .ds-specimens--grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+      align-items: stretch;
+    }
+
+    .ds-specimens--stack {
+      display: grid;
+      align-items: stretch;
+    }
+
+    .ds-sections {
+      gap: var(--space-8);
+      padding: var(--space-4);
+      overflow: hidden;
+    }
+
+    .ds-swatches {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+      gap: var(--space-4);
+    }
+
+    .ds-swatch {
+      overflow: hidden;
+      border: var(--border-width-sm) solid var(--border);
+      border-radius: var(--radius-xl);
+      background: var(--card);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .ds-swatch__color {
+      min-height: 5rem;
+      border-bottom: var(--border-width-sm) solid var(--border);
+    }
+
+    .ds-swatch__meta {
+      display: grid;
+      gap: var(--space-1);
+      padding: var(--space-4);
+      font-size: var(--text-sm);
+    }
+
+    .ds-type-row {
+      display: grid;
+      gap: var(--space-4);
+      padding-block: var(--space-5);
+      border-bottom: var(--border-width-sm) solid var(--border);
+    }
+
+    .ds-type-row:last-child {
+      border-bottom: 0;
+    }
+
+    .ds-scale {
+      display: grid;
+      gap: var(--space-3);
+    }
+
+    .ds-scale__row {
+      display: grid;
+      grid-template-columns: 5rem minmax(0, 1fr);
+      gap: var(--space-4);
+      align-items: center;
+    }
+
+    .ds-scale__bar {
+      min-height: var(--space-6);
+      border-radius: var(--radius-full);
+      background: linear-gradient(90deg, var(--primary), var(--accent));
+    }
+
+    .ds-radius-row,
+    .ds-shadow-row {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+      gap: var(--space-4);
+    }
+
+    .ds-radius-card,
+    .ds-shadow-card {
+      min-height: 6rem;
+      display: grid;
+      place-items: center;
+      padding: var(--space-4);
+      border: var(--border-width-sm) solid var(--border);
+      background: var(--card);
+      color: var(--muted-foreground);
+      font-size: var(--text-sm);
+      font-weight: var(--font-semibold);
+    }
+
+    .ds-showcase-hero {
+      position: relative;
+      overflow: hidden;
+      padding-block: var(--space-20);
+      border-bottom: var(--border-width-sm) solid var(--border);
+      background:
+        radial-gradient(circle at 20% 20%, color-mix(in srgb, var(--primary) 20%, transparent), transparent 30rem),
+        radial-gradient(circle at 80% 10%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 28rem);
+    }
+
+    .ds-showcase-hero__inner {
+      width: min(100% - var(--space-8), var(--content-width));
+      margin-inline: auto;
+      display: grid;
+      gap: var(--space-8);
+      text-align: center;
+      place-items: center;
+    }
+
+    .ds-showcase-hero__badge {
+      margin-inline: auto;
+    }
+
+    .ds-showcase-hero__title {
+      max-width: 12ch;
+      font-size: clamp(var(--text-4xl), 8vw, var(--text-6xl));
+    }
+
+    .ds-showcase-hero__lead {
+      max-width: 48rem;
+      font-size: var(--text-xl);
+      line-height: var(--leading-relaxed);
+    }
+
+    .ds-showcase-hero__actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: var(--space-3);
+    }
+
+    .ds-showcase-hero__stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: var(--space-4);
+      width: min(100%, 42rem);
+    }
+
+    .ds-mini-cell {
+      min-height: 4rem;
+      display: grid;
+      place-items: center;
+      padding: var(--space-4);
+      border: var(--border-width-sm) solid var(--border);
+      border-radius: var(--radius-lg);
+      background: var(--muted);
+      color: var(--muted-foreground);
+      font-size: var(--text-sm);
+      font-weight: var(--font-semibold);
+      text-align: center;
+    }
+
+    @media (max-width: 767px) {
+      .ds-showcase-hero__stats {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container-wide site-header__inner">
+      <a class="brand" href="#top" aria-label="PulseHQ home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg class="size-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 13.5L9.2 5l4 14 3-8.5H20" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span>PulseHQ</span>
+      </a>
+
+      <nav class="site-nav" id="ds-navigation" aria-label="Design system navigation">
+        <a class="nav-link" href="#foundations">Foundations</a>
+        <a class="nav-link" href="#components">Components</a>
+        <a class="nav-link" href="#sections">Sections</a>
+        <button class="btn btn-ghost" type="button" aria-label="Toggle theme">Toggle theme</button>
+      </nav>
+
+      <button class="mobile-nav-toggle" type="button" aria-label="Toggle navigation" aria-controls="ds-navigation" aria-expanded="false">
+        <span class="mobile-nav-toggle__bar" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+
+  <section class="ds-showcase-hero" id="top">
+    <div class="ds-showcase-hero__inner">
+      <span class="badge ds-showcase-hero__badge">Token-driven system</span>
+      <h1 class="ds-showcase-hero__title">Premium SaaS patterns ready for Klar.</h1>
+      <p class="ds-showcase-hero__lead">
+        A production-grade, runtime-editable landing page system with semantic components,
+        polished conversion sections, accessible controls, and a complete utility manifest.
+      </p>
+      <div class="ds-showcase-hero__actions">
+        <a class="btn btn-primary btn-lg" href="#sections">Browse sections</a>
+        <a class="btn btn-outline btn-lg" href="../index.html">View landing page</a>
+      </div>
+      <div class="ds-showcase-hero__stats">
+        <div class="stat">
+          <span class="stat__value">52</span>
+          <span class="stat__label">Utilities cataloged</span>
+        </div>
+        <div class="stat">
+          <span class="stat__value">12</span>
+          <span class="stat__label">Section templates</span>
+        </div>
+        <div class="stat">
+          <span class="stat__value">2</span>
+          <span class="stat__label">Themes included</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <main class="container-wide ds-page">
+    <section class="ds-block" id="foundations">
+      <h2>Foundations</h2>
+      <p class="ds-note">
+        The system is built from a compact token scale: semantic color roles, responsive typography,
+        rhythmic spacing, consistent radius, and layered shadows.
+      </p>
+
+      <h3 class="ds-subhead">Colors</h3>
+      <div class="ds-swatches">
+        <div class="ds-swatch">
+          <div class="ds-swatch__color bg-background"></div>
+          <div class="ds-swatch__meta"><strong>Background</strong><span class="text-muted-foreground">bg-background</span></div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch__color bg-foreground"></div>
+          <div class="ds-swatch__meta"><strong>Foreground</strong><span class="text-muted-foreground">bg-foreground</span></div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch__color bg-primary"></div>
+          <div class="ds-swatch__meta"><strong>Primary</strong><span class="text-muted-foreground">bg-primary</span></div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch__color bg-secondary"></div>
+          <div class="ds-swatch__meta"><strong>Secondary</strong><span class="text-muted-foreground">bg-secondary</span></div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch__color bg-muted"></div>
+          <div class="ds-swatch__meta"><strong>Muted</strong><span class="text-muted-foreground">bg-muted</span></div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch__color bg-accent"></div>
+          <div class="ds-swatch__meta"><strong>Accent</strong><span class="text-muted-foreground">bg-accent</span></div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch__color bg-card"></div>
+          <div class="ds-swatch__meta"><strong>Card</strong><span class="text-muted-foreground">bg-card</span></div>
+        </div>
+        <div class="ds-swatch">
+          <div class="ds-swatch__color bg-gradient"></div>
+          <div class="ds-swatch__meta"><strong>Gradient</strong><span class="text-muted-foreground">bg-gradient</span></div>
+        </div>
+      </div>
+
+      <h3 class="ds-subhead">Typography</h3>
+      <div class="card p-6">
+        <div class="ds-type-row">
+          <span class="text-muted-foreground text-sm">Display / text-6xl</span>
+          <strong class="text-6xl leading-tight tracking-tight">Scale without the sprawl</strong>
+        </div>
+        <div class="ds-type-row">
+          <span class="text-muted-foreground text-sm">Heading / text-4xl</span>
+          <strong class="text-4xl leading-tight tracking-tight">Build confident SaaS pages</strong>
+        </div>
+        <div class="ds-type-row">
+          <span class="text-muted-foreground text-sm">Lead / text-xl</span>
+          <span class="text-xl leading-relaxed text-muted-foreground">A larger paragraph style for high-converting hero and section introductions.</span>
+        </div>
+        <div class="ds-type-row">
+          <span class="text-muted-foreground text-sm">Body / text-base</span>
+          <span class="text-base leading-normal text-muted-foreground">Readable body copy with strong contrast, generous rhythm, and predictable wrapping.</span>
+        </div>
+        <div class="flex flex-wrap gap-4 mt-6">
+          <span class="font-normal">Normal</span>
+          <span class="font-medium">Medium</span>
+          <span class="font-semibold">Semibold</span>
+          <span class="font-bold">Bold</span>
+        </div>
+      </div>
+
+      <h3 class="ds-subhead">Spacing</h3>
+      <div class="ds-scale">
+        <div class="ds-scale__row"><span class="text-sm text-muted-foreground">space-2</span><span class="ds-scale__bar" style="width: var(--space-2);"></span></div>
+        <div class="ds-scale__row"><span class="text-sm text-muted-foreground">space-4</span><span class="ds-scale__bar" style="width: var(--space-4);"></span></div>
+        <div class="ds-scale__row"><span class="text-sm text-muted-foreground">space-6</span><span class="ds-scale__bar" style="width: var(--space-6);"></span></div>
+        <div class="ds-scale__row"><span class="text-sm text-muted-foreground">space-8</span><span class="ds-scale__bar" style="width: var(--space-8);"></span></div>
+        <div class="ds-scale__row"><span class="text-sm text-muted-foreground">space-12</span><span class="ds-scale__bar" style="width: var(--space-12);"></span></div>
+        <div class="ds-scale__row"><span class="text-sm text-muted-foreground">space-16</span><span class="ds-scale__bar" style="width: var(--space-16);"></span></div>
+        <div class="ds-scale__row"><span class="text-sm text-muted-foreground">space-20</span><span class="ds-scale__bar" style="width: var(--space-20);"></span></div>
+      </div>
+
+      <h3 class="ds-subhead">Borders</h3>
+      <div class="ds-specimens">
+        <div class="ds-mini-cell border-0">border-0</div>
+        <div class="ds-mini-cell border">border</div>
+        <div class="ds-mini-cell border-2">border-2</div>
+        <div class="ds-mini-cell border-4">border-4</div>
+        <div class="ds-mini-cell border border-primary">border-primary</div>
+        <div class="ds-mini-cell border border-foreground">border-foreground</div>
+      </div>
+
+      <h3 class="ds-subhead">Radius</h3>
+      <div class="ds-radius-row">
+        <div class="ds-radius-card rounded-none">None</div>
+        <div class="ds-radius-card rounded-sm">Small</div>
+        <div class="ds-radius-card rounded-md">Medium</div>
+        <div class="ds-radius-card rounded-lg">Large</div>
+        <div class="ds-radius-card rounded-xl">XL</div>
+        <div class="ds-radius-card rounded-2xl">2XL</div>
+        <div class="ds-radius-card rounded-full">Full</div>
+      </div>
+
+      <h3 class="ds-subhead">Shadows</h3>
+      <div class="ds-shadow-row">
+        <div class="ds-shadow-card shadow-none">None</div>
+        <div class="ds-shadow-card shadow-sm">Small</div>
+        <div class="ds-shadow-card shadow-md">Medium</div>
+        <div class="ds-shadow-card shadow-lg">Large</div>
+        <div class="ds-shadow-card shadow-glow">Glow</div>
+      </div>
+
+      <h3 class="ds-subhead">Rich text</h3>
+      <article class="prose card p-8">
+        <h1>Operate from one clear source of truth</h1>
+        <p>
+          Revenue teams need a shared workspace that makes priorities obvious. A compact
+          design language helps authors publish long-form pages without breaking hierarchy.
+        </p>
+        <h2>What a strong article block supports</h2>
+        <p>
+          Authors can add <a href="#components">links to product sections</a>, inline
+          <code>status</code> labels, ordered guidance, and persuasive proof points.
+        </p>
+        <ul>
+          <li>Readable paragraph rhythm for executive summaries.</li>
+          <li>Strong headings that scan well on mobile devices.</li>
+          <li>Quotes and lists that preserve conversion-focused storytelling.</li>
+        </ul>
+        <blockquote>
+          “The best SaaS pages feel effortless because every element is governed by a clear system.”
+        </blockquote>
+        <h3>Publishing confidence</h3>
+        <p>
+          The <code>.prose</code> wrapper styles nested content consistently while still allowing
+          editors to compose pages from section templates.
+        </p>
+      </article>
+    </section>
+
+    <section class="ds-block" id="components">
+      <h2>Component Library</h2>
+      <p class="ds-note">
+        Components use semantic classes for meaning and pair with utility classes for runtime editing.
+        Link variants are listed before button variants wherever both are useful.
+      </p>
+
+      <h3 class="ds-subhead">Buttons</h3>
+      <div class="ds-specimens" data-klar-ds-elements="buttons" data-klar-ds-label="Buttons">
+        <a class="btn btn-primary" href="#" data-klar-ds-label="Primary link">Start free</a>
+        <button class="btn btn-primary" type="button" data-klar-ds-label="Primary button">Start free</button>
+        <a class="btn btn-secondary" href="#" data-klar-ds-label="Secondary link">See plans</a>
+        <button class="btn btn-secondary" type="button" data-klar-ds-label="Secondary button">See plans</button>
+        <a class="btn btn-outline" href="#" data-klar-ds-label="Outline link">Book demo</a>
+        <button class="btn btn-outline" type="button" data-klar-ds-label="Outline button">Book demo</button>
+        <a class="btn btn-ghost" href="#" data-klar-ds-label="Ghost link">Learn more</a>
+        <button class="btn btn-ghost" type="button" data-klar-ds-label="Ghost button">Learn more</button>
+        <a class="btn btn-primary btn-lg" href="#" data-klar-ds-label="Large primary link">Launch workspace</a>
+        <button class="btn btn-primary btn-lg" type="button" data-klar-ds-label="Large primary button">Launch workspace</button>
+      </div>
+
+      <h3 class="ds-subhead">Badges and tags</h3>
+      <div class="ds-specimens" data-klar-ds-elements="badges" data-klar-ds-label="Badges and tags">
+        <span class="badge" data-klar-ds-label="Primary badge">New release</span>
+        <span class="badge badge-accent" data-klar-ds-label="Accent badge">AI workflow</span>
+        <span class="tag" data-klar-ds-label="Tag">SOC 2 ready</span>
+      </div>
+
+      <h3 class="ds-subhead">Links</h3>
+      <div class="ds-specimens" data-klar-ds-elements="links" data-klar-ds-label="Links">
+        <a class="nav-link" href="#" data-klar-ds-label="Navigation link">Features</a>
+        <a class="cta-link" href="#" data-klar-ds-label="CTA link">Read customer story →</a>
+      </div>
+
+      <h3 class="ds-subhead">Cards</h3>
+      <div class="ds-specimens ds-specimens--grid" data-klar-ds-elements="cards" data-klar-ds-label="Cards">
+        <article class="card" data-klar-ds-label="Feature card">
+          <div class="card__header">
+            <span class="icon-card" aria-hidden="true">
+              <svg class="size-6" viewBox="0 0 24 24" fill="none">
+                <path d="M4 17V7m5 10V4m5 13v-6m5 6V9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+              </svg>
+            </span>
+            <h3 class="card__title">Predictable pipeline</h3>
+          </div>
+          <div class="card__body">
+            <p class="card__text">Forecast every account, campaign, and handoff from one conversion dashboard.</p>
+          </div>
+        </article>
+
+        <article class="card testimonial" data-klar-ds-label="Testimonial card">
+          <div class="card__body">
+            <p class="testimonial__quote">“PulseHQ replaced four tools and gave our team the confidence to scale pipeline.”</p>
+            <div class="testimonial__author">
+              <span class="avatar" aria-hidden="true">MK</span>
+              <div>
+                <strong>Maya Kim</strong>
+                <p class="text-sm">VP Revenue, Northstar Labs</p>
+              </div>
+            </div>
+          </div>
+        </article>
+
+        <article class="card pricing-card" data-klar-ds-label="Pricing card">
+          <div class="card__header">
+            <span class="badge">Scale</span>
+            <h3 class="card__title">Growth</h3>
+            <div class="price"><span class="price__amount">$79</span><span class="price__period">/seat</span></div>
+          </div>
+          <div class="card__body">
+            <ul class="feature-list">
+              <li><span class="check">✓</span><span>Unlimited dashboards</span></li>
+              <li><span class="check">✓</span><span>AI recommendations</span></li>
+              <li><span class="check">✓</span><span>Priority onboarding</span></li>
+            </ul>
+          </div>
+          <div class="card__footer">
+            <a class="btn btn-primary w-full" href="#">Choose Growth</a>
+          </div>
+        </article>
+      </div>
+
+      <h3 class="ds-subhead">Forms</h3>
+      <div class="ds-specimens ds-specimens--grid" data-klar-ds-elements="forms" data-klar-ds-label="Forms">
+        <div class="field" data-klar-ds-label="Input field">
+          <label class="label" for="ds-email">Work email</label>
+          <input class="input" id="ds-email" type="email" placeholder="name@company.com" />
+        </div>
+        <div class="field" data-klar-ds-label="Select field">
+          <label class="label" for="ds-team-size">Team size</label>
+          <select class="select" id="ds-team-size">
+            <option>1–10</option>
+            <option>11–50</option>
+            <option>51–250</option>
+          </select>
+        </div>
+        <div class="field" data-klar-ds-label="Textarea field">
+          <label class="label" for="ds-message">Message</label>
+          <textarea class="textarea" id="ds-message" placeholder="Tell us what you want to improve."></textarea>
+        </div>
+      </div>
+
+      <h3 class="ds-subhead">Stats</h3>
+      <div class="ds-specimens" data-klar-ds-elements="stats" data-klar-ds-label="Stats">
+        <div class="stat" data-klar-ds-label="Stat">
+          <span class="stat__value">38%</span>
+          <span class="stat__label">Faster sales cycles</span>
+        </div>
+      </div>
+
+      <h3 class="ds-subhead">FAQ</h3>
+      <div class="ds-specimens ds-specimens--stack" data-klar-ds-elements="faq-items" data-klar-ds-label="FAQ items">
+        <div class="faq-item" data-klar-ds-label="FAQ item">
+          <button class="faq-question" type="button" aria-expanded="true">
+            How quickly can a team launch?
+            <span class="faq-icon" aria-hidden="true">+</span>
+          </button>
+          <div class="faq-answer is-open">
+            <div class="faq-answer__inner">
+              <p>Most teams connect their CRM, invite users, and publish their first executive workspace in one afternoon.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="ds-subhead">Container</h3>
+      <div class="ds-specimens ds-specimens--stack" data-klar-ds-elements="containers" data-klar-ds-label="Container">
+        <div class="container card p-4" data-klar-ds-label="Default">Default width container for most SaaS sections.</div>
+        <div class="container-narrow card p-4" data-klar-ds-label="Narrow">Narrow container for prose, FAQs, and focused CTAs.</div>
+        <div class="container-wide card p-4" data-klar-ds-label="Wide">Wide container for dashboards, pricing tables, and complex grids.</div>
+      </div>
+
+      <h3 class="ds-subhead">Grid</h3>
+      <div class="ds-specimens ds-specimens--stack" data-klar-ds-elements="grids" data-klar-ds-label="Grid">
+        <div class="grid grid-cols-1" data-klar-ds-label="1 column">
+          <div class="ds-mini-cell">Workflow</div>
+        </div>
+        <div class="grid grid-cols-2" data-klar-ds-label="2 columns">
+          <div class="ds-mini-cell">Pipeline</div>
+          <div class="ds-mini-cell">Forecast</div>
+        </div>
+        <div class="grid grid-cols-3" data-klar-ds-label="3 columns">
+          <div class="ds-mini-cell">Plan</div>
+          <div class="ds-mini-cell">Launch</div>
+          <div class="ds-mini-cell">Optimize</div>
+        </div>
+        <div class="grid grid-cols-4" data-klar-ds-label="4 columns">
+          <div class="ds-mini-cell">Lead</div>
+          <div class="ds-mini-cell">Route</div>
+          <div class="ds-mini-cell">Close</div>
+          <div class="ds-mini-cell">Expand</div>
+        </div>
+      </div>
+
+      <h3 class="ds-subhead">Container and Grid</h3>
+      <div class="ds-specimens ds-specimens--stack" data-klar-ds-elements="containers-and-grids" data-klar-ds-label="Container and Grid">
+        <div class="container grid grid-cols-1" data-klar-ds-label="Default · 1 col"><div class="ds-mini-cell">Executive summary</div></div>
+        <div class="container grid grid-cols-2" data-klar-ds-label="Default · 2 cols"><div class="ds-mini-cell">Insight</div><div class="ds-mini-cell">Action</div></div>
+        <div class="container grid grid-cols-3" data-klar-ds-label="Default · 3 cols"><div class="ds-mini-cell">Acquire</div><div class="ds-mini-cell">Convert</div><div class="ds-mini-cell">Retain</div></div>
+        <div class="container grid grid-cols-4" data-klar-ds-label="Default · 4 cols"><div class="ds-mini-cell">A</div><div class="ds-mini-cell">B</div><div class="ds-mini-cell">C</div><div class="ds-mini-cell">D</div></div>
+        <div class="container-narrow grid grid-cols-1" data-klar-ds-label="Narrow · 1 col"><div class="ds-mini-cell">Article block</div></div>
+        <div class="container-narrow grid grid-cols-2" data-klar-ds-label="Narrow · 2 cols"><div class="ds-mini-cell">Question</div><div class="ds-mini-cell">Answer</div></div>
+        <div class="container-narrow grid grid-cols-3" data-klar-ds-label="Narrow · 3 cols"><div class="ds-mini-cell">One</div><div class="ds-mini-cell">Two</div><div class="ds-mini-cell">Three</div></div>
+        <div class="container-narrow grid grid-cols-4" data-klar-ds-label="Narrow · 4 cols"><div class="ds-mini-cell">Q1</div><div class="ds-mini-cell">Q2</div><div class="ds-mini-cell">Q3</div><div class="ds-mini-cell">Q4</div></div>
+        <div class="container-wide grid grid-cols-1" data-klar-ds-label="Wide · 1 col"><div class="ds-mini-cell">Dashboard feature</div></div>
+        <div class="container-wide grid grid-cols-2" data-klar-ds-label="Wide · 2 cols"><div class="ds-mini-cell">Product</div><div class="ds-mini-cell">Proof</div></div>
+        <div class="container-wide grid grid-cols-3" data-klar-ds-label="Wide · 3 cols"><div class="ds-mini-cell">Starter</div><div class="ds-mini-cell">Growth</div><div class="ds-mini-cell">Enterprise</div></div>
+        <div class="container-wide grid grid-cols-4" data-klar-ds-label="Wide · 4 cols"><div class="ds-mini-cell">North</div><div class="ds-mini-cell">South</div><div class="ds-mini-cell">East</div><div class="ds-mini-cell">West</div></div>
+      </div>
+    </section>
+
+    <section class="ds-block" id="sections">
+      <h2>Sections</h2>
+      <p class="ds-note">
+        These are template-ready, self-contained page sections available to Klar’s root-block insert menu.
+      </p>
+
+      <div class="ds-specimens ds-specimens--stack ds-sections" data-klar-ds-elements="Sections" data-klar-ds-label="Page sections">
+        <header class="site-header" data-klar-ds-label="Header">
+          <div class="container-wide site-header__inner">
+            <a class="brand" href="../index.html" aria-label="PulseHQ home">
+              <span class="brand-mark" aria-hidden="true">
+                <svg class="size-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M5 13.5L9.2 5l4 14 3-8.5H20" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <span>PulseHQ</span>
+            </a>
+            <nav class="site-nav" aria-label="Primary navigation">
+              <a class="nav-link" href="#features">Features</a>
+              <a class="nav-link" href="#pricing">Pricing</a>
+              <a class="nav-link" href="#faq">FAQ</a>
+              <a class="btn btn-primary" href="#pricing">Start free</a>
+            </nav>
+          </div>
+        </header>
+
+        <section class="hero" data-klar-ds-label="Hero">
+          <div class="container-wide hero__inner">
+            <div class="hero__content">
+              <span class="badge">Revenue command center</span>
+              <h1 class="hero__title">Turn every go-to-market signal into pipeline.</h1>
+              <p class="hero__lead">
+                PulseHQ gives modern SaaS teams one intelligent workspace to prioritize accounts,
+                automate follow-up, and forecast revenue with confidence.
+              </p>
+              <div class="hero__actions">
+                <a class="btn btn-primary btn-lg" href="#pricing">Start free trial</a>
+                <a class="btn btn-outline btn-lg" href="#features">See platform</a>
+              </div>
+              <div class="hero__proof">
+                <div class="stat"><span class="stat__value">38%</span><span class="stat__label">shorter cycles</span></div>
+                <div class="stat"><span class="stat__value">4.9/5</span><span class="stat__label">customer rating</span></div>
+              </div>
+            </div>
+            <div class="hero-visual">
+              <div class="dashboard-card">
+                <div class="dashboard-card__topbar">
+                  <span class="tag">Live pipeline</span>
+                  <span class="text-sm text-muted-foreground">$4.8M forecast</span>
+                </div>
+                <div class="dashboard-card__body">
+                  <div class="dashboard-row">
+                    <div class="flex justify-between gap-4"><strong>Expansion</strong><span class="text-primary font-semibold">86%</span></div>
+                    <div class="progress"><div class="progress__bar progress__bar--long"></div></div>
+                  </div>
+                  <div class="dashboard-row">
+                    <div class="flex justify-between gap-4"><strong>New business</strong><span class="text-primary font-semibold">68%</span></div>
+                    <div class="progress"><div class="progress__bar progress__bar--medium"></div></div>
+                  </div>
+                  <div class="dashboard-row">
+                    <div class="flex justify-between gap-4"><strong>At-risk deals</strong><span class="text-primary font-semibold">44%</span></div>
+                    <div class="progress"><div class="progress__bar progress__bar--short"></div></div>
+                  </div>
+                </div>
+              </div>
+              <div class="floating-panel">
+                <span class="badge badge-accent">AI next step</span>
+                <p class="mt-4 text-sm">Send pricing recap to 12 high-intent accounts today.</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section-tight" data-klar-ds-label="Logo strip">
+          <div class="container">
+            <p class="text-center text-sm font-semibold uppercase tracking-wide text-muted-foreground mb-6">Trusted by high-velocity revenue teams</p>
+            <div class="logo-strip">
+              <span class="logo-pill">Northstar</span>
+              <span class="logo-pill">Orbitware</span>
+              <span class="logo-pill">Cloudlane</span>
+              <span class="logo-pill">SignalFox</span>
+              <span class="logo-pill">Vectorly</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" data-klar-ds-label="Features">
+          <div class="container-wide">
+            <div class="section-header mb-12">
+              <span class="badge mx-auto">Features</span>
+              <h2>Everything your GTM team needs to move faster.</h2>
+              <p>Replace scattered dashboards with one workspace that turns customer intent into coordinated action.</p>
+            </div>
+            <div class="feature-grid">
+              <article class="card feature-card">
+                <div class="card__header">
+                  <span class="icon-card" aria-hidden="true">↗</span>
+                  <h3 class="card__title">Signal scoring</h3>
+                </div>
+                <div class="card__body"><p class="card__text">Prioritize accounts using product usage, buying intent, engagement, and CRM context.</p></div>
+              </article>
+              <article class="card feature-card">
+                <div class="card__header">
+                  <span class="icon-card" aria-hidden="true">⚡</span>
+                  <h3 class="card__title">Automated plays</h3>
+                </div>
+                <div class="card__body"><p class="card__text">Trigger the right next step for sales, success, and marketing without manual routing.</p></div>
+              </article>
+              <article class="card feature-card">
+                <div class="card__header">
+                  <span class="icon-card" aria-hidden="true">◎</span>
+                  <h3 class="card__title">Executive forecast</h3>
+                </div>
+                <div class="card__body"><p class="card__text">Understand pipeline health, risks, and expansion opportunities in real time.</p></div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" data-klar-ds-label="Benefits">
+          <div class="container-wide benefit">
+            <div class="dashboard-card">
+              <div class="dashboard-card__topbar">
+                <strong>Team focus</strong>
+                <span class="badge">This week</span>
+              </div>
+              <div class="dashboard-card__body">
+                <div class="dashboard-row"><strong>42 accounts ready for expansion</strong><p class="text-sm">High usage and new stakeholder activity.</p></div>
+                <div class="dashboard-row"><strong>18 renewals need attention</strong><p class="text-sm">Procurement and adoption signals are trending down.</p></div>
+                <div class="dashboard-row"><strong>31 demos should be accelerated</strong><p class="text-sm">Pricing page visits increased 3.4×.</p></div>
+              </div>
+            </div>
+            <div class="grid gap-6">
+              <span class="badge badge-accent">Why teams switch</span>
+              <h2>Less tool-hopping. More revenue focus.</h2>
+              <p class="text-lg leading-relaxed">PulseHQ aligns every team around the same signal model, so leaders know what matters and reps know what to do next.</p>
+              <ul class="benefit-list">
+                <li class="benefit-item"><span class="check">✓</span><span>Unify product, CRM, enrichment, and campaign signals.</span></li>
+                <li class="benefit-item"><span class="check">✓</span><span>Explain pipeline changes with board-ready reporting.</span></li>
+                <li class="benefit-item"><span class="check">✓</span><span>Launch plays in minutes with no engineering dependency.</span></li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" data-klar-ds-label="Testimonials">
+          <div class="container-wide">
+            <div class="section-header mb-12">
+              <span class="badge mx-auto">Social proof</span>
+              <h2>Operators use PulseHQ to scale with clarity.</h2>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <article class="card testimonial">
+                <div class="card__body">
+                  <p class="testimonial__quote">“We finally have one place to see what is moving pipeline and why.”</p>
+                  <div class="testimonial__author"><span class="avatar">AR</span><div><strong>Ari Rao</strong><p class="text-sm">CRO, Cloudlane</p></div></div>
+                </div>
+              </article>
+              <article class="card testimonial">
+                <div class="card__body">
+                  <p class="testimonial__quote">“Our reps stopped guessing. PulseHQ tells them which action matters today.”</p>
+                  <div class="testimonial__author"><span class="avatar">JL</span><div><strong>Jules Lee</strong><p class="text-sm">VP Sales, SignalFox</p></div></div>
+                </div>
+              </article>
+              <article class="card testimonial">
+                <div class="card__body">
+                  <p class="testimonial__quote">“Forecast reviews are shorter, sharper, and backed by evidence.”</p>
+                  <div class="testimonial__author"><span class="avatar">NS</span><div><strong>Nora Stein</strong><p class="text-sm">COO, Vectorly</p></div></div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" data-klar-ds-label="Pricing">
+          <div class="container-wide">
+            <div class="section-header mb-12">
+              <span class="badge mx-auto">Pricing</span>
+              <h2>Plans that scale with your revenue motion.</h2>
+              <p>Start quickly, upgrade when you need deeper governance and enterprise support.</p>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <article class="card pricing-card">
+                <div class="card__header">
+                  <h3 class="card__title">Starter</h3>
+                  <div class="price"><span class="price__amount">$29</span><span class="price__period">/seat</span></div>
+                  <p>For small teams launching their first shared workspace.</p>
+                </div>
+                <div class="card__body flex-1">
+                  <ul class="feature-list">
+                    <li><span class="check">✓</span><span>3 connected sources</span></li>
+                    <li><span class="check">✓</span><span>Core dashboards</span></li>
+                    <li><span class="check">✓</span><span>Email support</span></li>
+                  </ul>
+                </div>
+                <div class="card__footer"><a class="btn btn-outline w-full" href="#">Start Starter</a></div>
+              </article>
+              <article class="card pricing-card pricing-card--featured">
+                <div class="card__header">
+                  <span class="badge">Most popular</span>
+                  <h3 class="card__title">Growth</h3>
+                  <div class="price"><span class="price__amount">$79</span><span class="price__period">/seat</span></div>
+                  <p>For scaling teams that need automation and AI guidance.</p>
+                </div>
+                <div class="card__body flex-1">
+                  <ul class="feature-list">
+                    <li><span class="check">✓</span><span>Unlimited sources</span></li>
+                    <li><span class="check">✓</span><span>AI recommendations</span></li>
+                    <li><span class="check">✓</span><span>Priority onboarding</span></li>
+                  </ul>
+                </div>
+                <div class="card__footer"><a class="btn btn-primary w-full" href="#">Start Growth</a></div>
+              </article>
+              <article class="card pricing-card">
+                <div class="card__header">
+                  <h3 class="card__title">Enterprise</h3>
+                  <div class="price"><span class="price__amount">Custom</span></div>
+                  <p>For global teams with governance and security requirements.</p>
+                </div>
+                <div class="card__body flex-1">
+                  <ul class="feature-list">
+                    <li><span class="check">✓</span><span>Advanced permissions</span></li>
+                    <li><span class="check">✓</span><span>Dedicated success team</span></li>
+                    <li><span class="check">✓</span><span>Custom procurement</span></li>
+                  </ul>
+                </div>
+                <div class="card__footer"><a class="btn btn-outline w-full" href="#">Contact sales</a></div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" data-klar-ds-label="FAQ">
+          <div class="container-narrow">
+            <div class="section-header mb-12">
+              <span class="badge mx-auto">FAQ</span>
+              <h2>Questions before you launch?</h2>
+            </div>
+            <div class="faq">
+              <div class="faq-item">
+                <button class="faq-question" type="button" aria-expanded="false">Do we need engineering help?<span class="faq-icon" aria-hidden="true">+</span></button>
+                <div class="faq-answer"><div class="faq-answer__inner"><p>No. Most data sources connect through guided setup, and teams can publish plays without code.</p></div></div>
+              </div>
+              <div class="faq-item">
+                <button class="faq-question" type="button" aria-expanded="false">Is PulseHQ secure?<span class="faq-icon" aria-hidden="true">+</span></button>
+                <div class="faq-answer"><div class="faq-answer__inner"><p>Yes. PulseHQ supports SSO, role-based access, audit logs, and enterprise-grade data controls.</p></div></div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section class="section" data-klar-ds-label="Text content">
+          <article class="container-narrow prose">
+            <h1>How modern teams operationalize revenue intelligence</h1>
+            <p>
+              Revenue teams win when every function can understand the same customer signals.
+              A shared workspace makes planning clearer, coaching faster, and forecasting more reliable.
+            </p>
+            <h2>Start with the highest-impact accounts</h2>
+            <p>
+              PulseHQ combines engagement, product usage, CRM movement, and campaign activity into
+              a practical operating model your team can use every day.
+            </p>
+            <ul>
+              <li>Identify expansion-ready customers before a competitor does.</li>
+              <li>Route urgent handoffs to the right owner automatically.</li>
+              <li>Explain forecast movement with source-level evidence.</li>
+            </ul>
+            <blockquote>
+              “A strong revenue operating system turns scattered signals into repeatable decisions.”
+            </blockquote>
+            <h3>Make the next action obvious</h3>
+            <p>
+              Use dashboards, plays, and AI recommendations to keep every rep focused on the work
+              most likely to create pipeline.
+            </p>
+          </article>
+        </section>
+
+        <section class="section" data-klar-ds-label="Newsletter CTA">
+          <div class="container">
+            <div class="cta">
+              <div class="grid gap-6 md:flex md:items-center md:justify-between">
+                <div class="max-w-3xl">
+                  <span class="badge">Launch this quarter</span>
+                  <h2 class="mt-4">Ready to turn signals into revenue?</h2>
+                  <p class="mt-4 text-lg">Start a free workspace, connect your first data source, and see priority accounts in minutes.</p>
+                </div>
+                <a class="btn btn-secondary btn-lg" href="#pricing">Start free</a>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <footer class="site-footer" data-klar-ds-label="Footer">
+          <div class="container-wide site-footer__inner">
+            <div class="footer-grid">
+              <div>
+                <a class="brand" href="../index.html">
+                  <span class="brand-mark" aria-hidden="true">P</span>
+                  <span>PulseHQ</span>
+                </a>
+                <p class="mt-4 max-w-xl">The revenue command center for SaaS teams that want clearer priorities, faster plays, and better forecasts.</p>
+              </div>
+              <div class="footer-links">
+                <strong>Product</strong>
+                <a class="footer-link" href="#features">Features</a>
+                <a class="footer-link" href="#pricing">Pricing</a>
+                <a class="footer-link" href="#faq">FAQ</a>
+              </div>
+              <div class="footer-links">
+                <strong>Company</strong>
+                <a class="footer-link" href="#">Customers</a>
+                <a class="footer-link" href="#">Security</a>
+                <a class="footer-link" href="#">Careers</a>
+              </div>
+              <div class="footer-links">
+                <strong>Legal</strong>
+                <a class="footer-link" href="#">Privacy</a>
+                <a class="footer-link" href="#">Terms</a>
+                <a class="footer-link" href="#">Status</a>
+              </div>
+            </div>
+            <div class="flex flex-wrap gap-4 justify-between border-t pt-6">
+              <p class="text-sm">© 2026 PulseHQ. All rights reserved.</p>
+              <a class="cta-link" href="#top">Back to top ↑</a>
+            </div>
+          </div>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container-wide site-footer__inner">
+      <div class="flex flex-wrap gap-4 justify-between">
+        <p class="text-sm">Design system for PulseHQ landing page.</p>
+        <a class="cta-link" href="#top">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Foundation utility manifest for the Klar editor.
+       Every value references a class that exists in style.css. -->
+  <script type="application/json" data-klar-ds>
+    {
+      "classes": {
+        "Background color": [
+          { "label": "Page", "value": "bg-background" },
+          { "label": "Foreground", "value": "bg-foreground" },
+          { "label": "Brand", "value": "bg-primary" },
+          { "label": "Secondary", "value": "bg-secondary" },
+          { "label": "Muted", "value": "bg-muted" },
+          { "label": "Accent", "value": "bg-accent" },
+          { "label": "Card surface", "value": "bg-card" },
+          { "label": "Transparent", "value": "bg-transparent" },
+          { "label": "Gradient", "value": "bg-gradient" }
+        ],
+        "Text color": [
+          { "label": "Body", "value": "text-foreground" },
+          { "label": "On foreground", "value": "text-background" },
+          { "label": "Primary", "value": "text-primary" },
+          { "label": "On brand", "value": "text-primary-foreground" },
+          { "label": "On secondary", "value": "text-secondary-foreground" },
+          { "label": "Muted", "value": "text-muted-foreground" },
+          { "label": "Accent", "value": "text-accent" },
+          { "label": "On accent", "value": "text-accent-foreground" },
+          { "label": "Destructive", "value": "text-destructive" },
+          { "label": "White", "value": "text-white" },
+          { "label": "Black", "value": "text-black" }
+        ],
+        "Border": [
+          { "label": "All none", "value": "border-0" },
+          { "label": "All small", "value": "border" },
+          { "label": "All medium", "value": "border-2" },
+          { "label": "All large", "value": "border-4" },
+          { "label": "Top small", "value": "border-t" },
+          { "label": "Right small", "value": "border-r" },
+          { "label": "Bottom small", "value": "border-b" },
+          { "label": "Left small", "value": "border-l" }
+        ],
+        "Border color": [
+          { "label": "Default", "value": "border-border" },
+          { "label": "Primary", "value": "border-primary" },
+          { "label": "Foreground", "value": "border-foreground" },
+          { "label": "Transparent", "value": "border-transparent" }
+        ],
+        "Font size": [
+          { "label": "XS", "value": "text-xs" },
+          { "label": "Small", "value": "text-sm" },
+          { "label": "Base", "value": "text-base" },
+          { "label": "Large", "value": "text-lg" },
+          { "label": "XL", "value": "text-xl" },
+          { "label": "2XL", "value": "text-2xl" },
+          { "label": "3XL", "value": "text-3xl" },
+          { "label": "4XL", "value": "text-4xl" },
+          { "label": "5XL", "value": "text-5xl" },
+          { "label": "6XL", "value": "text-6xl" },
+          { "label": "5XL", "value": "md:text-5xl" },
+          { "label": "6XL", "value": "lg:text-6xl" }
+        ],
+        "Font weight": [
+          { "label": "Normal", "value": "font-normal" },
+          { "label": "Medium", "value": "font-medium" },
+          { "label": "Semibold", "value": "font-semibold" },
+          { "label": "Bold", "value": "font-bold" }
+        ],
+        "Line height": [
+          { "label": "Tight", "value": "leading-tight" },
+          { "label": "Snug", "value": "leading-snug" },
+          { "label": "Normal", "value": "leading-normal" },
+          { "label": "Relaxed", "value": "leading-relaxed" }
+        ],
+        "Letter spacing": [
+          { "label": "Tight", "value": "tracking-tight" },
+          { "label": "Normal", "value": "tracking-normal" },
+          { "label": "Wide", "value": "tracking-wide" }
+        ],
+        "Text": [
+          { "label": "Align left", "value": "text-left" },
+          { "label": "Align center", "value": "text-center" },
+          { "label": "Align right", "value": "text-right" },
+          { "label": "Uppercase", "value": "uppercase" },
+          { "label": "Italic", "value": "italic" },
+          { "label": "Underline", "value": "underline" },
+          { "label": "Truncate", "value": "truncate" },
+          { "label": "Sans font", "value": "font-sans" },
+          { "label": "Align left", "value": "md:text-left" },
+          { "label": "Align center", "value": "md:text-center" },
+          { "label": "Align left", "value": "lg:text-left" }
+        ],
+        "Typography": [
+          { "label": "Display", "value": "text-6xl font-bold tracking-tight leading-tight" },
+          { "label": "Heading 1", "value": "text-5xl font-bold tracking-tight leading-tight" },
+          { "label": "Heading 2", "value": "text-4xl font-bold tracking-tight leading-tight" },
+          { "label": "Heading 3", "value": "text-3xl font-bold tracking-tight leading-snug" },
+          { "label": "Heading 4", "value": "text-2xl font-semibold leading-snug" },
+          { "label": "Lead", "value": "text-xl font-normal leading-relaxed" },
+          { "label": "Body", "value": "text-base font-normal leading-normal" },
+          { "label": "Small", "value": "text-sm font-normal leading-normal" },
+          { "label": "Meta", "value": "text-xs font-semibold uppercase tracking-wide" }
+        ],
+        "Display": [
+          { "label": "Block", "value": "block" },
+          { "label": "Inline block", "value": "inline-block" },
+          { "label": "Inline", "value": "inline" },
+          { "label": "Flex", "value": "flex" },
+          { "label": "Inline flex", "value": "inline-flex" },
+          { "label": "Grid", "value": "grid" },
+          { "label": "Hidden", "value": "hidden" },
+          { "label": "Block", "value": "md:block" },
+          { "label": "Flex", "value": "md:flex" },
+          { "label": "Grid", "value": "md:grid" },
+          { "label": "Hidden", "value": "md:hidden" },
+          { "label": "Block", "value": "lg:block" },
+          { "label": "Flex", "value": "lg:flex" },
+          { "label": "Grid", "value": "lg:grid" },
+          { "label": "Hidden", "value": "lg:hidden" }
+        ],
+        "Flexbox": [
+          { "label": "Row", "value": "flex-row" },
+          { "label": "Column", "value": "flex-col" },
+          { "label": "Wrap", "value": "flex-wrap" },
+          { "label": "Flex 1", "value": "flex-1" },
+          { "label": "No shrink", "value": "flex-shrink-0" },
+          { "label": "Items start", "value": "items-start" },
+          { "label": "Items center", "value": "items-center" },
+          { "label": "Items end", "value": "items-end" },
+          { "label": "Justify start", "value": "justify-start" },
+          { "label": "Justify center", "value": "justify-center" },
+          { "label": "Justify between", "value": "justify-between" },
+          { "label": "Justify end", "value": "justify-end" },
+          { "label": "Row", "value": "md:flex-row" },
+          { "label": "Items center", "value": "md:items-center" },
+          { "label": "Justify between", "value": "md:justify-between" },
+          { "label": "Row", "value": "lg:flex-row" },
+          { "label": "Items center", "value": "lg:items-center" },
+          { "label": "Justify between", "value": "lg:justify-between" }
+        ],
+        "Grid columns": [
+          { "label": "1 column", "value": "grid-cols-1" },
+          { "label": "2 columns", "value": "grid-cols-2" },
+          { "label": "3 columns", "value": "grid-cols-3" },
+          { "label": "4 columns", "value": "grid-cols-4" },
+          { "label": "Span 1", "value": "col-span-1" },
+          { "label": "Span 2", "value": "col-span-2" },
+          { "label": "Span full", "value": "col-span-full" },
+          { "label": "2 columns", "value": "md:grid-cols-2" },
+          { "label": "3 columns", "value": "md:grid-cols-3" },
+          { "label": "Span 2", "value": "md:col-span-2" },
+          { "label": "2 columns", "value": "lg:grid-cols-2" },
+          { "label": "3 columns", "value": "lg:grid-cols-3" },
+          { "label": "4 columns", "value": "lg:grid-cols-4" },
+          { "label": "Span 2", "value": "lg:col-span-2" }
+        ],
+        "Gap": [
+          { "label": "3XS", "value": "gap-1" },
+          { "label": "2XS", "value": "gap-2" },
+          { "label": "XS", "value": "gap-3" },
+          { "label": "Small", "value": "gap-4" },
+          { "label": "Medium", "value": "gap-6" },
+          { "label": "Large", "value": "gap-8" },
+          { "label": "XL", "value": "gap-10" },
+          { "label": "2XL", "value": "gap-12" },
+          { "label": "Large", "value": "md:gap-8" },
+          { "label": "2XL", "value": "lg:gap-12" }
+        ],
+        "Margin": [
+          { "label": "Center horizontal", "value": "mx-auto" },
+          { "label": "All none", "value": "m-0" },
+          { "label": "All small", "value": "m-4" },
+          { "label": "All medium", "value": "m-6" },
+          { "label": "All large", "value": "m-8" },
+          { "label": "Horizontal none", "value": "mx-0" },
+          { "label": "Horizontal small", "value": "mx-4" },
+          { "label": "Horizontal medium", "value": "mx-6" },
+          { "label": "Horizontal large", "value": "mx-8" },
+          { "label": "Vertical none", "value": "my-0" },
+          { "label": "Vertical small", "value": "my-4" },
+          { "label": "Vertical medium", "value": "my-8" },
+          { "label": "Vertical large", "value": "my-12" },
+          { "label": "Vertical XL", "value": "my-16" },
+          { "label": "Top none", "value": "mt-0" },
+          { "label": "Top 2XS", "value": "mt-2" },
+          { "label": "Top small", "value": "mt-4" },
+          { "label": "Top medium", "value": "mt-6" },
+          { "label": "Top large", "value": "mt-8" },
+          { "label": "Top XL", "value": "mt-10" },
+          { "label": "Top 2XL", "value": "mt-12" },
+          { "label": "Right none", "value": "mr-0" },
+          { "label": "Right small", "value": "mr-4" },
+          { "label": "Right medium", "value": "mr-6" },
+          { "label": "Right large", "value": "mr-8" },
+          { "label": "Bottom none", "value": "mb-0" },
+          { "label": "Bottom 2XS", "value": "mb-2" },
+          { "label": "Bottom small", "value": "mb-4" },
+          { "label": "Bottom medium", "value": "mb-6" },
+          { "label": "Bottom large", "value": "mb-8" },
+          { "label": "Bottom XL", "value": "mb-10" },
+          { "label": "Bottom 2XL", "value": "mb-12" },
+          { "label": "Left none", "value": "ml-0" },
+          { "label": "Left small", "value": "ml-4" },
+          { "label": "Left medium", "value": "ml-6" },
+          { "label": "Left large", "value": "ml-8" },
+          { "label": "Vertical XL", "value": "md:my-16" }
+        ],
+        "Padding": [
+          { "label": "All none", "value": "p-0" },
+          { "label": "All small", "value": "p-4" },
+          { "label": "All small plus", "value": "p-5" },
+          { "label": "All medium", "value": "p-6" },
+          { "label": "All large", "value": "p-8" },
+          { "label": "All XL", "value": "p-10" },
+          { "label": "Horizontal none", "value": "px-0" },
+          { "label": "Horizontal small", "value": "px-4" },
+          { "label": "Horizontal small plus", "value": "px-5" },
+          { "label": "Horizontal medium", "value": "px-6" },
+          { "label": "Horizontal large", "value": "px-8" },
+          { "label": "Vertical none", "value": "py-0" },
+          { "label": "Vertical XS", "value": "py-3" },
+          { "label": "Vertical small", "value": "py-4" },
+          { "label": "Vertical medium", "value": "py-6" },
+          { "label": "Vertical large", "value": "py-8" },
+          { "label": "Vertical 2XL", "value": "py-12" },
+          { "label": "Vertical 3XL", "value": "py-16" },
+          { "label": "Vertical 4XL", "value": "py-20" },
+          { "label": "Top none", "value": "pt-0" },
+          { "label": "Top small", "value": "pt-4" },
+          { "label": "Top medium", "value": "pt-6" },
+          { "label": "Top large", "value": "pt-8" },
+          { "label": "Top 2XL", "value": "pt-12" },
+          { "label": "Right none", "value": "pr-0" },
+          { "label": "Right small", "value": "pr-4" },
+          { "label": "Right medium", "value": "pr-6" },
+          { "label": "Right large", "value": "pr-8" },
+          { "label": "Bottom none", "value": "pb-0" },
+          { "label": "Bottom small", "value": "pb-4" },
+          { "label": "Bottom medium", "value": "pb-6" },
+          { "label": "Bottom large", "value": "pb-8" },
+          { "label": "Bottom 2XL", "value": "pb-12" },
+          { "label": "Left none", "value": "pl-0" },
+          { "label": "Left small", "value": "pl-4" },
+          { "label": "Left medium", "value": "pl-6" },
+          { "label": "Left large", "value": "pl-8" },
+          { "label": "Vertical 3XL", "value": "md:py-16" },
+          { "label": "Vertical 4XL", "value": "lg:py-20" }
+        ],
+        "Sizing": [
+          { "label": "Width full", "value": "w-full" },
+          { "label": "Height full", "value": "h-full" },
+          { "label": "Min height screen", "value": "min-h-screen" },
+          { "label": "Header height", "value": "h-header" },
+          { "label": "Size 6", "value": "size-6" },
+          { "label": "Size 10", "value": "size-10" },
+          { "label": "Size 12", "value": "size-12" },
+          { "label": "Max width XL", "value": "max-w-xl" },
+          { "label": "Max width 2XL", "value": "max-w-2xl" },
+          { "label": "Max width 3XL", "value": "max-w-3xl" },
+          { "label": "Max width 4XL", "value": "max-w-4xl" },
+          { "label": "Max width 6XL", "value": "max-w-6xl" },
+          { "label": "Max width 7XL", "value": "max-w-7xl" }
+        ],
+        "Radius": [
+          { "label": "None", "value": "rounded-none" },
+          { "label": "Small", "value": "rounded-sm" },
+          { "label": "Medium", "value": "rounded-md" },
+          { "label": "Large", "value": "rounded-lg" },
+          { "label": "XL", "value": "rounded-xl" },
+          { "label": "2XL", "value": "rounded-2xl" },
+          { "label": "Full", "value": "rounded-full" }
+        ],
+        "Shadows": [
+          { "label": "None", "value": "shadow-none" },
+          { "label": "Small", "value": "shadow-sm" },
+          { "label": "Medium", "value": "shadow-md" },
+          { "label": "Large", "value": "shadow-lg" },
+          { "label": "Glow", "value": "shadow-glow" }
+        ],
+        "Position": [
+          { "label": "Relative", "value": "relative" },
+          { "label": "Absolute", "value": "absolute" },
+          { "label": "Sticky", "value": "sticky" },
+          { "label": "Fixed", "value": "fixed" },
+          { "label": "Inset 0", "value": "inset-0" },
+          { "label": "Top 0", "value": "top-0" },
+          { "label": "Right 0", "value": "right-0" },
+          { "label": "Bottom 0", "value": "bottom-0" },
+          { "label": "Left 0", "value": "left-0" },
+          { "label": "Z 50", "value": "z-50" }
+        ],
+        "Object fit & aspect": [
+          { "label": "Object cover", "value": "object-cover" },
+          { "label": "Aspect square", "value": "aspect-square" },
+          { "label": "Aspect video", "value": "aspect-video" }
+        ],
+        "Effects": [
+          { "label": "Overflow hidden", "value": "overflow-hidden" },
+          { "label": "Transition", "value": "transition" },
+          { "label": "Cursor pointer", "value": "cursor-pointer" },
+          { "label": "Backdrop blur", "value": "backdrop-blur" },
+          { "label": "Screen-reader only", "value": "sr-only" }
+        ],
+        "Rich text": [
+          { "label": "Prose", "value": "prose" }
+        ],
+        "Container": [
+          { "label": "Default", "value": "container" },
+          { "label": "Narrow", "value": "container-narrow" },
+          { "label": "Wide", "value": "container-wide" }
+        ],
+        "Grid": [
+          { "label": "1 column", "value": "grid grid-cols-1" },
+          { "label": "2 columns", "value": "grid grid-cols-2" },
+          { "label": "3 columns", "value": "grid grid-cols-3" },
+          { "label": "4 columns", "value": "grid grid-cols-4" }
+        ],
+        "Container and Grid": [
+          { "label": "Default · 1 col", "value": "container grid grid-cols-1" },
+          { "label": "Default · 2 cols", "value": "container grid grid-cols-2" },
+          { "label": "Default · 3 cols", "value": "container grid grid-cols-3" },
+          { "label": "Default · 4 cols", "value": "container grid grid-cols-4" },
+          { "label": "Narrow · 1 col", "value": "container-narrow grid grid-cols-1" },
+          { "label": "Narrow · 2 cols", "value": "container-narrow grid grid-cols-2" },
+          { "label": "Narrow · 3 cols", "value": "container-narrow grid grid-cols-3" },
+          { "label": "Narrow · 4 cols", "value": "container-narrow grid grid-cols-4" },
+          { "label": "Wide · 1 col", "value": "container-wide grid grid-cols-1" },
+          { "label": "Wide · 2 cols", "value": "container-wide grid grid-cols-2" },
+          { "label": "Wide · 3 cols", "value": "container-wide grid grid-cols-3" },
+          { "label": "Wide · 4 cols", "value": "container-wide grid grid-cols-4" }
+        ]
+      }
+    }
+  </script>
+
+  <script>
+    const themeButtons = document.querySelectorAll('[aria-label="Toggle theme"]');
+    themeButtons.forEach((button) => {
+      button.addEventListener('click', () => {
+        document.documentElement.classList.toggle('dark');
+      });
+    });
+
+    const navToggle = document.querySelector('.mobile-nav-toggle');
+    const nav = document.querySelector('#ds-navigation');
+
+    if (navToggle && nav) {
+      navToggle.addEventListener('click', () => {
+        const expanded = navToggle.getAttribute('aria-expanded') === 'true';
+        navToggle.setAttribute('aria-expanded', String(!expanded));
+        nav.classList.toggle('is-open', !expanded);
+      });
+    }
+  </script>
+</body>
+</html>

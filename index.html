@@ -1,14 +1,613 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>klar-site-5</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js" defer></script>
-  </head>
-  <body>
-    <h1>klar-site-5</h1>
-    <p>Edit this page with Klar.</p>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="PulseHQ is the AI revenue command center that helps SaaS teams prioritize accounts, automate plays, and forecast pipeline with confidence." />
+  <title>PulseHQ · AI Revenue Command Center for SaaS Teams</title>
+  <link rel="stylesheet" href="/style.css" />
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container-wide site-header__inner">
+      <a class="brand" href="#top" aria-label="PulseHQ home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg class="size-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <path d="M5 13.5L9.2 5l4 14 3-8.5H20" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </span>
+        <span>PulseHQ</span>
+      </a>
+
+      <nav class="site-nav" id="primary-navigation" aria-label="Primary navigation">
+        <a class="nav-link" href="#features">Features</a>
+        <a class="nav-link" href="#benefits">Benefits</a>
+        <a class="nav-link" href="#customers">Customers</a>
+        <a class="nav-link" href="#pricing">Pricing</a>
+        <a class="nav-link" href="#faq">FAQ</a>
+        <button class="btn btn-ghost" type="button" aria-label="Toggle theme">Theme</button>
+        <a class="btn btn-primary" href="#pricing">Start free</a>
+      </nav>
+
+      <button class="mobile-nav-toggle" type="button" aria-label="Toggle navigation" aria-controls="primary-navigation" aria-expanded="false">
+        <span class="mobile-nav-toggle__bar" aria-hidden="true"></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero">
+      <div class="container-wide hero__inner">
+        <div class="hero__content reveal">
+          <span class="badge">AI revenue command center</span>
+          <h1 class="hero__title">Turn every go-to-market signal into pipeline.</h1>
+          <p class="hero__lead">
+            PulseHQ gives modern SaaS teams one intelligent workspace to prioritize accounts,
+            automate follow-up, and forecast revenue with confidence.
+          </p>
+
+          <div class="hero__actions" aria-label="Primary calls to action">
+            <a class="btn btn-primary btn-lg" href="#pricing">Start 14-day free trial</a>
+            <a class="btn btn-outline btn-lg" href="#features">See the platform</a>
+          </div>
+
+          <div class="hero__proof" aria-label="Performance highlights">
+            <div class="stat">
+              <span class="stat__value">38%</span>
+              <span class="stat__label">shorter sales cycles</span>
+            </div>
+            <div class="stat">
+              <span class="stat__value">4.9/5</span>
+              <span class="stat__label">average customer rating</span>
+            </div>
+            <div class="stat">
+              <span class="stat__value">$2.4B</span>
+              <span class="stat__label">pipeline monitored</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal">
+          <div class="dashboard-card" aria-label="Revenue dashboard preview">
+            <div class="dashboard-card__topbar">
+              <span class="tag">Live pipeline</span>
+              <span class="text-sm text-muted-foreground">$4.8M forecast</span>
+            </div>
+            <div class="dashboard-card__body">
+              <div class="dashboard-row">
+                <div class="flex justify-between gap-4">
+                  <strong>Expansion opportunities</strong>
+                  <span class="text-primary font-semibold">86%</span>
+                </div>
+                <div class="progress" aria-label="Expansion opportunities at 86 percent">
+                  <div class="progress__bar progress__bar--long"></div>
+                </div>
+              </div>
+
+              <div class="dashboard-row">
+                <div class="flex justify-between gap-4">
+                  <strong>New business intent</strong>
+                  <span class="text-primary font-semibold">68%</span>
+                </div>
+                <div class="progress" aria-label="New business intent at 68 percent">
+                  <div class="progress__bar progress__bar--medium"></div>
+                </div>
+              </div>
+
+              <div class="dashboard-row">
+                <div class="flex justify-between gap-4">
+                  <strong>At-risk renewals</strong>
+                  <span class="text-primary font-semibold">44%</span>
+                </div>
+                <div class="progress" aria-label="At-risk renewals at 44 percent">
+                  <div class="progress__bar progress__bar--short"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="floating-panel">
+            <span class="badge badge-accent">AI next step</span>
+            <p class="mt-4 text-sm">
+              Send pricing recap to 12 high-intent accounts before the weekly pipeline review.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-tight" aria-labelledby="trusted-by">
+      <div class="container">
+        <h2 class="sr-only" id="trusted-by">Trusted by leading SaaS teams</h2>
+        <p class="text-center text-sm font-semibold uppercase tracking-wide text-muted-foreground mb-6">
+          Trusted by high-velocity revenue teams
+        </p>
+        <div class="logo-strip" aria-label="Customer logos">
+          <span class="logo-pill">Northstar</span>
+          <span class="logo-pill">Orbitware</span>
+          <span class="logo-pill">Cloudlane</span>
+          <span class="logo-pill">SignalFox</span>
+          <span class="logo-pill">Vectorly</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="features" aria-labelledby="features-title">
+      <div class="container-wide">
+        <div class="section-header mb-12 reveal">
+          <span class="badge mx-auto">Features</span>
+          <h2 id="features-title">Everything your GTM team needs to move faster.</h2>
+          <p>
+            Replace scattered dashboards with one workspace that turns customer intent into coordinated action.
+          </p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="card feature-card reveal">
+            <div class="card__header">
+              <span class="icon-card" aria-hidden="true">
+                <svg class="size-6" viewBox="0 0 24 24" fill="none">
+                  <path d="M4 17V7m5 10V4m5 13v-6m5 6V9" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <h3 class="card__title">Signal scoring</h3>
+            </div>
+            <div class="card__body">
+              <p class="card__text">
+                Prioritize accounts using product usage, buying intent, engagement, firmographics, and CRM context.
+              </p>
+            </div>
+          </article>
+
+          <article class="card feature-card reveal">
+            <div class="card__header">
+              <span class="icon-card" aria-hidden="true">
+                <svg class="size-6" viewBox="0 0 24 24" fill="none">
+                  <path d="M13 2L4 14h7l-1 8 10-13h-7l0-7z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <h3 class="card__title">Automated plays</h3>
+            </div>
+            <div class="card__body">
+              <p class="card__text">
+                Trigger the right next step for sales, success, and marketing without manual routing or brittle workflows.
+              </p>
+            </div>
+          </article>
+
+          <article class="card feature-card reveal">
+            <div class="card__header">
+              <span class="icon-card" aria-hidden="true">
+                <svg class="size-6" viewBox="0 0 24 24" fill="none">
+                  <path d="M4 19V5m0 14h16M8 15l3-4 3 2 5-7" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <h3 class="card__title">Executive forecast</h3>
+            </div>
+            <div class="card__body">
+              <p class="card__text">
+                Understand pipeline health, risks, and expansion opportunities in real time with board-ready reporting.
+              </p>
+            </div>
+          </article>
+
+          <article class="card feature-card reveal">
+            <div class="card__header">
+              <span class="icon-card" aria-hidden="true">
+                <svg class="size-6" viewBox="0 0 24 24" fill="none">
+                  <path d="M7 8h10M7 12h6m-7 8l3-4h8a4 4 0 0 0 4-4V8a4 4 0 0 0-4-4H7a4 4 0 0 0-4 4v4a4 4 0 0 0 4 4" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <h3 class="card__title">AI account briefs</h3>
+            </div>
+            <div class="card__body">
+              <p class="card__text">
+                Summarize deal history, usage shifts, stakeholder changes, and recommended messaging before every call.
+              </p>
+            </div>
+          </article>
+
+          <article class="card feature-card reveal">
+            <div class="card__header">
+              <span class="icon-card" aria-hidden="true">
+                <svg class="size-6" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 3v18m8-9H4m13.5-6.5l-11 11m11 2l-11-11" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/>
+                </svg>
+              </span>
+              <h3 class="card__title">Revenue orchestration</h3>
+            </div>
+            <div class="card__body">
+              <p class="card__text">
+                Align marketing campaigns, sales outreach, renewal motions, and customer success plans around shared signals.
+              </p>
+            </div>
+          </article>
+
+          <article class="card feature-card reveal">
+            <div class="card__header">
+              <span class="icon-card" aria-hidden="true">
+                <svg class="size-6" viewBox="0 0 24 24" fill="none">
+                  <path d="M12 3l8 4v5c0 5-3.4 8-8 9-4.6-1-8-4-8-9V7l8-4z" stroke="currentColor" stroke-width="2.2" stroke-linejoin="round"/>
+                  <path d="M9 12l2 2 4-5" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+              </span>
+              <h3 class="card__title">Enterprise controls</h3>
+            </div>
+            <div class="card__body">
+              <p class="card__text">
+                Keep teams secure with SSO, role-based permissions, audit logs, and configurable data governance.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="benefits" aria-labelledby="benefits-title">
+      <div class="container-wide benefit">
+        <div class="dashboard-card reveal">
+          <div class="dashboard-card__topbar">
+            <strong>Team focus</strong>
+            <span class="badge">This week</span>
+          </div>
+          <div class="dashboard-card__body">
+            <div class="dashboard-row">
+              <strong>42 accounts ready for expansion</strong>
+              <p class="text-sm">High usage, new stakeholder activity, and recent pricing-page visits.</p>
+            </div>
+            <div class="dashboard-row">
+              <strong>18 renewals need attention</strong>
+              <p class="text-sm">Procurement friction and adoption signals are trending down.</p>
+            </div>
+            <div class="dashboard-row">
+              <strong>31 demos should be accelerated</strong>
+              <p class="text-sm">Buying committee engagement increased 3.4× in the last seven days.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="grid gap-6 reveal">
+          <span class="badge badge-accent">Why teams switch</span>
+          <h2 id="benefits-title">Less tool-hopping. More revenue focus.</h2>
+          <p class="text-lg leading-relaxed">
+            PulseHQ aligns every team around the same signal model, so leaders know what matters
+            and reps know exactly what to do next.
+          </p>
+
+          <ul class="benefit-list">
+            <li class="benefit-item">
+              <span class="check" aria-hidden="true">✓</span>
+              <span>Unify product, CRM, enrichment, campaign, and support signals in one operating layer.</span>
+            </li>
+            <li class="benefit-item">
+              <span class="check" aria-hidden="true">✓</span>
+              <span>Explain pipeline changes with board-ready context instead of spreadsheet archaeology.</span>
+            </li>
+            <li class="benefit-item">
+              <span class="check" aria-hidden="true">✓</span>
+              <span>Launch plays in minutes with no engineering dependency or heavyweight implementation.</span>
+            </li>
+          </ul>
+
+          <a class="cta-link" href="#pricing">Compare plans →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="customers" aria-labelledby="customers-title">
+      <div class="container-wide">
+        <div class="section-header mb-12 reveal">
+          <span class="badge mx-auto">Social proof</span>
+          <h2 id="customers-title">Operators use PulseHQ to scale with clarity.</h2>
+          <p>
+            From early-stage startups to enterprise revenue organizations, teams use PulseHQ to create predictable growth.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <article class="card testimonial reveal">
+            <div class="card__body">
+              <p class="testimonial__quote">
+                “We finally have one place to see what is moving pipeline and why. Our weekly forecast review went from ninety minutes to twenty.”
+              </p>
+              <div class="testimonial__author">
+                <span class="avatar" aria-hidden="true">AR</span>
+                <div>
+                  <strong>Ari Rao</strong>
+                  <p class="text-sm">Chief Revenue Officer, Cloudlane</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="card testimonial reveal">
+            <div class="card__body">
+              <p class="testimonial__quote">
+                “Our reps stopped guessing. PulseHQ tells them which action matters today, and managers can coach from the same evidence.”
+              </p>
+              <div class="testimonial__author">
+                <span class="avatar" aria-hidden="true">JL</span>
+                <div>
+                  <strong>Jules Lee</strong>
+                  <p class="text-sm">VP Sales, SignalFox</p>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="card testimonial reveal">
+            <div class="card__body">
+              <p class="testimonial__quote">
+                “The biggest surprise was adoption. Sales, success, and marketing all wanted the same view by week two.”
+              </p>
+              <div class="testimonial__author">
+                <span class="avatar" aria-hidden="true">NS</span>
+                <div>
+                  <strong>Nora Stein</strong>
+                  <p class="text-sm">COO, Vectorly</p>
+                </div>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-12">
+          <div class="card p-6 text-center reveal">
+            <div class="stat">
+              <span class="stat__value">12.8M</span>
+              <span class="stat__label">customer signals processed monthly</span>
+            </div>
+          </div>
+          <div class="card p-6 text-center reveal">
+            <div class="stat">
+              <span class="stat__value">27%</span>
+              <span class="stat__label">average lift in qualified meetings</span>
+            </div>
+          </div>
+          <div class="card p-6 text-center reveal">
+            <div class="stat">
+              <span class="stat__value">8 hrs</span>
+              <span class="stat__label">saved per manager every week</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="pricing" aria-labelledby="pricing-title">
+      <div class="container-wide">
+        <div class="section-header mb-12 reveal">
+          <span class="badge mx-auto">Pricing</span>
+          <h2 id="pricing-title">Plans that scale with your revenue motion.</h2>
+          <p>
+            Start quickly, upgrade when you need deeper governance, advanced automation, and enterprise support.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <article class="card pricing-card reveal">
+            <div class="card__header">
+              <h3 class="card__title">Starter</h3>
+              <p>For small teams launching their first shared revenue workspace.</p>
+              <div class="price">
+                <span class="price__amount">$29</span>
+                <span class="price__period">/seat per month</span>
+              </div>
+            </div>
+            <div class="card__body flex-1">
+              <ul class="feature-list">
+                <li><span class="check" aria-hidden="true">✓</span><span>3 connected data sources</span></li>
+                <li><span class="check" aria-hidden="true">✓</span><span>Core pipeline dashboards</span></li>
+                <li><span class="check" aria-hidden="true">✓</span><span>Account scoring templates</span></li>
+                <li><span class="check" aria-hidden="true">✓</span><span>Email support</span></li>
+              </ul>
+            </div>
+            <div class="card__footer">
+              <a class="btn btn-outline w-full" href="#faq">Start Starter</a>
+            </div>
+          </article>
+
+          <article class="card pricing-card pricing-card--featured reveal">
+            <div class="card__header">
+              <span class="badge">Most popular</span>
+              <h3 class="card__title">Growth</h3>
+              <p>For scaling teams that need automation, AI guidance, and priority onboarding.</p>
+              <div class="price">
+                <span class="price__amount">$79</span>
+                <span class="price__period">/seat per month</span>
+              </div>
+            </div>
+            <div class="card__body flex-1">
+              <ul class="feature-list">
+                <li><span class="check" aria-hidden="true">✓</span><span>Unlimited connected sources</span></li>
+                <li><span class="check" aria-hidden="true">✓</span><span>AI next-best-action recommendations</span></li>
+                <li><span class="check" aria-hidden="true">✓</span><span>Automated plays and routing</span></li>
+                <li><span class="check" aria-hidden="true">✓</span><span>Priority onboarding and support</span></li>
+              </ul>
+            </div>
+            <div class="card__footer">
+              <a class="btn btn-primary w-full" href="#faq">Start Growth</a>
+            </div>
+          </article>
+
+          <article class="card pricing-card reveal">
+            <div class="card__header">
+              <h3 class="card__title">Enterprise</h3>
+              <p>For global teams with governance, security, and procurement requirements.</p>
+              <div class="price">
+                <span class="price__amount">Custom</span>
+              </div>
+            </div>
+            <div class="card__body flex-1">
+              <ul class="feature-list">
+                <li><span class="check" aria-hidden="true">✓</span><span>Advanced permissions and SSO</span></li>
+                <li><span class="check" aria-hidden="true">✓</span><span>Custom data retention controls</span></li>
+                <li><span class="check" aria-hidden="true">✓</span><span>Dedicated success team</span></li>
+                <li><span class="check" aria-hidden="true">✓</span><span>Security and procurement support</span></li>
+              </ul>
+            </div>
+            <div class="card__footer">
+              <a class="btn btn-outline w-full" href="#faq">Contact sales</a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="faq" aria-labelledby="faq-title">
+      <div class="container-narrow">
+        <div class="section-header mb-12 reveal">
+          <span class="badge mx-auto">FAQ</span>
+          <h2 id="faq-title">Questions before you launch?</h2>
+          <p>
+            Here is what teams usually ask before connecting their first source and inviting the broader revenue team.
+          </p>
+        </div>
+
+        <div class="faq reveal">
+          <div class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-1" id="faq-question-1">
+              How quickly can we launch PulseHQ?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-1" role="region" aria-labelledby="faq-question-1">
+              <div class="faq-answer__inner">
+                <p>
+                  Most teams connect their CRM, invite users, and publish their first executive workspace in one afternoon.
+                  Growth and Enterprise customers receive guided onboarding to map their signal model.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-2" id="faq-question-2">
+              Do we need engineering help?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-2" role="region" aria-labelledby="faq-question-2">
+              <div class="faq-answer__inner">
+                <p>
+                  No. PulseHQ includes guided source connections, configurable scoring, and no-code playbooks.
+                  Technical teams can optionally use APIs and webhooks for deeper customization.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-3" id="faq-question-3">
+              Which tools does PulseHQ connect to?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-3" role="region" aria-labelledby="faq-question-3">
+              <div class="faq-answer__inner">
+                <p>
+                  PulseHQ connects with common CRMs, product analytics tools, data warehouses, enrichment providers,
+                  marketing automation platforms, support tools, and customer success systems.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-4" id="faq-question-4">
+              Is PulseHQ secure enough for enterprise teams?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-4" role="region" aria-labelledby="faq-question-4">
+              <div class="faq-answer__inner">
+                <p>
+                  Yes. PulseHQ supports SSO, role-based access, audit logs, configurable retention, and enterprise-grade
+                  data controls designed for security-conscious SaaS organizations.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" type="button" aria-expanded="false" aria-controls="faq-answer-5" id="faq-question-5">
+              Can we change plans later?
+              <span class="faq-icon" aria-hidden="true">+</span>
+            </button>
+            <div class="faq-answer" id="faq-answer-5" role="region" aria-labelledby="faq-question-5">
+              <div class="faq-answer__inner">
+                <p>
+                  Absolutely. You can start with Starter, move to Growth as your team scales, or work with us on
+                  an Enterprise plan when you need advanced governance and custom procurement.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-labelledby="cta-title">
+      <div class="container">
+        <div class="cta reveal">
+          <div class="grid gap-6 md:flex md:items-center md:justify-between">
+            <div class="max-w-3xl">
+              <span class="badge">Launch this quarter</span>
+              <h2 class="mt-4" id="cta-title">Ready to turn signals into revenue?</h2>
+              <p class="mt-4 text-lg">
+                Start a free workspace, connect your first data source, and see priority accounts in minutes.
+              </p>
+            </div>
+            <a class="btn btn-secondary btn-lg" href="#pricing">Start free trial</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container-wide site-footer__inner">
+      <div class="footer-grid">
+        <div>
+          <a class="brand" href="#top" aria-label="PulseHQ home">
+            <span class="brand-mark" aria-hidden="true">
+              <svg class="size-6" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                <path d="M5 13.5L9.2 5l4 14 3-8.5H20" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>
+            </span>
+            <span>PulseHQ</span>
+          </a>
+          <p class="mt-4 max-w-xl">
+            The revenue command center for SaaS teams that want clearer priorities, faster plays, and better forecasts.
+          </p>
+        </div>
+
+        <div class="footer-links">
+          <strong>Product</strong>
+          <a class="footer-link" href="#features">Features</a>
+          <a class="footer-link" href="#benefits">Benefits</a>
+          <a class="footer-link" href="#pricing">Pricing</a>
+        </div>
+
+        <div class="footer-links">
+          <strong>Resources</strong>
+          <a class="footer-link" href="#customers">Customers</a>
+          <a class="footer-link" href="#faq">FAQ</a>
+          <a class="footer-link" href="design-system/design-system.html">Design system</a>
+        </div>
+
+        <div class="footer-links">
+          <strong>Company</strong>
+          <a class="footer-link" href="#top">About</a>
+          <a class="footer-link" href="#top">Security</a>
+          <a class="footer-link" href="#top">Contact</a>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap gap-4 justify-between border-t pt-6">
+        <p class="text-sm">© 2026 PulseHQ. All rights reserved.</p>
+        <a class="cta-link" href="#top">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
 </html>
